@@ -1,4 +1,4 @@
-:#include "shell.h"
+#include "shell.h"
 /**
 *hsh - main shell loop
 *@info: the parameter & return info struct
@@ -148,12 +148,12 @@ exit(1);
 /* TODO: PUT ERROR FUNCTION */
 }
 else
-{
-	wait(&(info->status));
-	if ((WIFEXITED(info->status))
+{	wait(&(info->status));
+if (WIFEXITED(info->status))
 {
 info->status = WEXITSTATUS(info->status);
 if (info->status == 126)
 	print_error(info, "Permission denied\n");
+}
 }
 }

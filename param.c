@@ -16,8 +16,10 @@ if (!*len)
 free(*buf);
 *buf = NULL;
 signal(SIGINT, sigintHandler);
-#if USE_GETLINE r = getline(buf, &len_p, stdin);
-#else r = _getline(info, buf, &len_p);
+#if USE_GETLINE 
+r = getline(buf, &len_p, stdin);
+#else 
+r = _getline(info, buf, &len_p);
 #endif
 if (r > 0)
 {
@@ -74,7 +76,7 @@ i = j + 1;
 /* increment past nulled ';'' */
 if (i >= len)
 /* reached end of buffer? */
-{i
+{
 i = len = 0; /* reset position and length */
 info->cmd_buf_type = CMD_NORM;
 }
